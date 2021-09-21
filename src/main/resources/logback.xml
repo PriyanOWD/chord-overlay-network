@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true">
+    <timestamp key="timeStamp" datePattern="yyyy-MM-dd'_'HH-mm-ss"/>
+
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>logs/sim_${timeStamp}.log</file>
+        <append>false</append>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="ASYNC" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="FILE" />
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="ASYNC" />
+    </root>
+</configuration>
